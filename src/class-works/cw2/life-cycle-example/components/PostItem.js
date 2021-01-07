@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Feed } from "semantic-ui-react";
+import CommentInfo from './CommentInfo';
 
 class PostItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showComments: false,
+    }
+  }
+
   render() {
     const { post, onClick } = this.props;
+    const { showComments } = this.state
     return (
       <Feed>
         <Feed.Event>
@@ -12,10 +21,16 @@ class PostItem extends Component {
           </Feed.Label>
           <Feed.Content>
             <Feed.Summary onClick={onClick}>
-              <Feed.User>{post.title}</Feed.User>
+              <Feed.User
+                onClick={() => this.setState({ showComments: !showComments })}>
+                {post.title}
+              </Feed.User>
             </Feed.Summary>
             <Feed.Extra text>
               {post.body}
+            </Feed.Extra>
+            <Feed.Extra>
+              {showComments && <CommentInfo postId={post.id} /> }
             </Feed.Extra>
           </Feed.Content>
         </Feed.Event>

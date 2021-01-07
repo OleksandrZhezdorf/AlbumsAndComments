@@ -6,6 +6,7 @@ import UserList from "./class-works/cw1/UserList";
 import Week1 from "./home-works/hw1/Week1";
 import CompositionExample from "./class-works/cw2/compositions-example/CompositionExample";
 import Blog from "./class-works/cw2/life-cycle-example/Blog";
+import Clock from "./class-works/cw2/life-cycle-example/Clock";
 import AutofocusInput from "./class-works/cw2/refs/AutofocusInput";
 
 

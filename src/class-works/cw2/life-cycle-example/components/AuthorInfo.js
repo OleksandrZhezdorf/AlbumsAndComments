@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from "semantic-ui-react";
+import CommentItem from './CommentItem';
 import LoadingOverlay from "./LoadingOverlay";
 
 class AuthorInfo extends Component {
@@ -9,6 +10,7 @@ class AuthorInfo extends Component {
       author: null,
       loading: false,
       error: '',
+      albums: []
     }
   }
 
@@ -25,11 +27,17 @@ class AuthorInfo extends Component {
     if (authorId) {
       this.fetchAuthor(authorId)
     }
+    if (authorId) {
+      this.fetchAlbum(authorId)
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.authorId !== this.props.authorId && this.props.authorId) {
       this.fetchAuthor(this.props.authorId)
+    }
+    if (prevProps.authorId !== this.props.authorId && this.props.authorId) {
+      this.fetchAlbum(this.props.authorId)
     }
   }
 
@@ -41,8 +49,25 @@ class AuthorInfo extends Component {
       .catch(e => this.setState({ error: e.message, loading: false, author: null }))
   }
 
+  fetchAlbum(authorId) {
+    this.setState({ loading: true });
+    fetch(`https://jsonplaceholder.typicode.com/users/${authorId}/albums`)
+      .then(response => response.json())
+      .then(albums => {
+        this.setState({
+          loading: false,
+          albums
+        })
+      })
+      .catch(e => {
+        this.setState({
+          loading: false
+        });
+      })
+  }
+
   render() {
-    const { error, author, loading } = this.state;
+    const { error, author, loading, albums } = this.state;
     return (
       <div className='author-fixed'>
         <div className='error'>{error}</div>
@@ -62,6 +87,9 @@ class AuthorInfo extends Component {
             <Card.Content extra>
               <a>
                 <Icon name='camera' />
+                <span>
+                  {albums.map(post => <CommentItem post={post} key={post.id} />).length}
+                </span>
               </a>
             </Card.Content>
           </Card>

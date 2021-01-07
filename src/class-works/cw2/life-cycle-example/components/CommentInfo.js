@@ -6,34 +6,33 @@ export default class CommentInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            author: null,
             loading: false,
             error: '',
-            posts: [],
+            comments: [],
         }
     }
 
     componentDidMount() {
-        const { authorId } = this.props;
-        if (authorId) {
-            this.fetchAuthor(authorId)
+        const { postId } = this.props;
+        if (postId) {
+            this.fetchComment(postId)
         }
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.authorId !== this.props.authorId && this.props.authorId) {
-            this.fetchAuthor(this.props.authorId)
+        if (prevProps.postId !== this.props.postId && this.props.postId) {
+            this.fetchComment(this.props.postId)
         }
     }
 
-    fetchAuthor(authorId) {
+    fetchComment(postId) {
         this.setState({ loading: true });
-        fetch(`https://jsonplaceholder.typicode.com/posts/${authorId}/comments`)
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
             .then(response => response.json())
-            .then(posts => {
+            .then(comments => {
                 this.setState({
                     loading: false,
-                    posts
+                    comments
                 })
             })
             .catch(e => {
@@ -44,14 +43,14 @@ export default class CommentInfo extends Component {
             })
     }
     render() {
-        const { error, loading, posts } = this.state;
+        const { error, loading, comments } = this.state;
         return (
-            <div className='author-fixed'>
+            <div className='comment-fixed'>
                 <div className='error'>{error}</div>
                 <LoadingOverlay active={loading} />
                 <div className='post-list-wrapper'>
                     <LoadingOverlay active={loading} />
-                    {posts.map(post => <CommentItem  post={post} key={post.id} />)}
+                    {comments.map(post => <CommentItem  post={post} key={post.id} />)}
                 </div>
             </div>
         )

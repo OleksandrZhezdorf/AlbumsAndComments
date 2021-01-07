@@ -28,6 +28,7 @@ li.user-list-item span {
   margin-top: 50px;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -59,15 +60,21 @@ li.user-list-item span {
 }
 
 .author-fixed {
+  top: 20px;
   position: fixed;
+}
+
+.comment-fixed {
   top: 20px;
 }
 
-.album-list-wrapper {
-  position: relative;
-  margin-top: 445px;
-  margin-left: 50px;
+.commentright {
+  border: 1px solid black;
+  padding: 5px;
+  background-color: blanchedalmond;
+  border-radius: 10px;
 }
+
 
 @keyframes App-logo-spin {
   from {

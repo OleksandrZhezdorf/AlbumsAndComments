@@ -3,9 +3,9 @@ import { Feed } from "semantic-ui-react";
 
 export default class CommentItem extends Component {
     render() {
-        const { post, onClick } = this.props;
+        const { post, onClick} = this.props;
         return (
-            <Feed>
+            <Feed className = 'commentright'>
                 <Feed.Event>
                     <Feed.Content>
                         <Feed.Summary onClick={onClick}>

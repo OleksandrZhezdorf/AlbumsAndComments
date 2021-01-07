@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PostList from "./components/PostList";
 import AuthorInfo from "./components/AuthorInfo";
-import { Button, Grid, GridColumn } from "semantic-ui-react";
-import CommentInfo from './components/CommentInfo';
-import AlbumsInfo from './components/AlbumsInfo';
+import { Button, Grid } from "semantic-ui-react";
+
+
 
 class Blog extends Component {
   state = {
@@ -35,10 +35,8 @@ class Blog extends Component {
         </Grid.Column>
         <Grid.Column width={4}>
           <AuthorInfo authorId={selectedAuthorId} />
-          <AlbumsInfo authorId={selectedAuthorId} />
         </Grid.Column>
         <Grid.Column width={2}>
-          <CommentInfo authorId={selectedAuthorId} />
         </Grid.Column>
       </Grid>
     );
