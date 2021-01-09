@@ -8,13 +8,14 @@ import CompositionExample from "./class-works/cw2/compositions-example/Compositi
 import Blog from "./class-works/cw2/life-cycle-example/Blog";
 import Clock from "./class-works/cw2/life-cycle-example/Clock";
 import AutofocusInput from "./class-works/cw2/refs/AutofocusInput";
+import Glider from './home-works/hw2/glider';
 
 
 class App extends React.Component {
   render() {
     return (
       <div className='app'>
-        <Blog />
+        <Glider />
       </div>
     )
   }
