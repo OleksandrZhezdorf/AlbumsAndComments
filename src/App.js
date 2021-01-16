@@ -9,13 +9,17 @@ import Blog from "./class-works/cw2/life-cycle-example/Blog";
 import Clock from "./class-works/cw2/life-cycle-example/Clock";
 import AutofocusInput from "./class-works/cw2/refs/AutofocusInput";
 import Glider from './home-works/hw2/glider';
+import Counter, { CounterFunction, MouseTrackerExample} from './class-works/cw3/HooksExamples';
+import { LocalStorage } from './home-works/hw4/useLocalStorage';
+import { OnlineStatus } from './home-works/hw4/userIsOnline';
+import { DocumentTitle } from './home-works/hw4/useDocumentTitle';
 
 
 class App extends React.Component {
   render() {
     return (
       <div className='app'>
-        <Glider />
+        <DocumentTitle/>
       </div>
     )
   }
